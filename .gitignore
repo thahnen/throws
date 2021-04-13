@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# PyPI
+.pypirc
+
+# DS_STORE
+.DS_STORE
