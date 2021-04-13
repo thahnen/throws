@@ -4,13 +4,13 @@
 import setuptools
 
 
-with open("README.md", "r", encoding="utf-8") as readme:
+with open("README.md", "r", encoding = "utf-8") as readme:
     doc = readme.read()
 
 
 setuptools.setup(
     name = "throws",
-    version = "1.0.1",
+    version = "1.0.2",
     description = "Python implementation of Javas @throws(...) function decorator!",
     long_description = doc,
     long_description_content_type = "text/markdown",

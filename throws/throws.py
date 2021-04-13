@@ -7,21 +7,24 @@ from functools import wraps
 class ListEmptyException(Exception):
     """
     Exception which is thrown when list defined in decorator @throws([...]) is empty!
+
+    TODO: change name to EmptyListException
     """
     pass
 
 
 class InvalidRaisedException(Exception):
     """
-    Exception which is thrown when decorator @throws([...]) does not contain all throwable exceptions for decorated
-    function!
+    Exception which is thrown when decorator @throws([...]) does not contain all throwable
+    exceptions for decorated function!
     """
     pass
 
 
 def throws(exceptions: list):
     """
-    Decorator for functions equal to Javas "@throws(...)" to specify possible exceptions thrown
+    Decorator for functions equal to Javas "@throws(...)" to specify possible exceptions
+    thrown!
 
     :param exceptions: list of possible exceptions
     :return: function with decorator wrapped around
@@ -34,7 +37,7 @@ def throws(exceptions: list):
         def wrapper(*args, **kwargs):
             if len(exceptions) <= 0:
                 raise ListEmptyException(
-                    "List of possible exceptions provided to @throws([...]) decorator can not be empty!"
+                    "List of possible exceptions provided to decorator can not be empty!"
                 )
 
             try:
@@ -45,7 +48,7 @@ def throws(exceptions: list):
                         raise err
                 
                 raise InvalidRaisedException(
-                    f"Exception {err.__class__.__name__} missing in @throws([...]) decorator for "
+                    f"Exception {err.__class__.__name__} missing in list for decorator at "
                     + f"function '{function.__name__}'!"
                 ) from None
         
