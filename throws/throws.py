@@ -4,46 +4,45 @@
 from functools import wraps
 
 
-class ListEmptyException(Exception):
+class EmptyListException(Exception):
     """
-    Exception which is thrown when list defined in decorator @throws([...]) is empty!
-
-    TODO: change name to EmptyListException
+    Exception which is thrown when no exception or error is provided to the decorator @throws(...)
+    and therefor the list is empty!
     """
     pass
 
 
 class InvalidRaisedException(Exception):
     """
-    Exception which is thrown when decorator @throws([...]) does not contain all throwable
+    Exception which is thrown when decorator @throws(...) does not contain all throwable
     exceptions for decorated function!
     """
     pass
 
 
-def throws(exceptions: list):
+def throws(*errors: list):
     """
-    Decorator for functions equal to Javas "@throws(...)" to specify possible exceptions
-    thrown!
+    Decorator for functions equal to the "@throws(...)" decorator provided by Kotlin to specify
+    possible exceptions or errors thrown!
 
-    :param exceptions: list of possible exceptions
+    :param errors: list of possible exceptions
     :return: function with decorator wrapped around
-
-    TODO: Maybe change parameter exceptions to sth. like *args!
+    :exception EmptyListException: when no exception or error is provided in decorator
+    :exception InvalidRaisedException: when an exception or error is thrown which is not provided
     """
     
     def decorator(function):
         @wraps(function)
         def wrapper(*args, **kwargs):
-            if len(exceptions) <= 0:
-                raise ListEmptyException(
+            if len(errors) <= 0:
+                raise EmptyListException(
                     "List of possible exceptions provided to decorator can not be empty!"
                 )
 
             try:
                 return function(*args, **kwargs)
             except Exception as err:
-                for exception in exceptions:
+                for exception in errors:
                     if isinstance(err, exception):
                         raise err
                 

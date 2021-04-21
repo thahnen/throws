@@ -4,5 +4,5 @@
 from .throws import *
 
 
-__version__ = "1.0.2"
+__version__ = "1.0.4"
 __author__ = "Tobias Hahnen"

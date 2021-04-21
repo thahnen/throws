@@ -10,8 +10,8 @@ with open("README.md", "r", encoding = "utf-8") as readme:
 
 setuptools.setup(
     name = "throws",
-    version = "1.0.2",
-    description = "Python implementation of Javas @throws(...) function decorator!",
+    version = "1.0.4",
+    description = "Python implementation of the @throws(...) function decorator provided by Kotlin!",
     long_description = doc,
     long_description_content_type = "text/markdown",
     url = "https://github.com/thahnen/throws",
@@ -27,7 +27,6 @@ setuptools.setup(
         "Topic :: Software Development",
         "Natural Language :: English",
         "Operating System :: OS Independent",
-        "Development Status :: 4 - Beta",
-        #"Development Status :: 5 - Production/Stable"
+        "Development Status :: 5 - Production/Stable"
     ],
 )

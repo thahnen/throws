@@ -2,10 +2,10 @@
 # -*- coding: utf-8 -*-
 
 from typing import Optional
-from throws import throws, ListEmptyException, InvalidRaisedException
+from throws import throws, EmptyListException, InvalidRaisedException
 
 
-@throws([])
+@throws()
 def testEmptyThrowsList():
     """
     1. Testcase: empty list provided to decorator, should fail always with ListEmptyException
@@ -13,7 +13,7 @@ def testEmptyThrowsList():
     pass
 
 
-@throws([ValueError, AssertionError])
+@throws(ValueError, AssertionError)
 def testIncompleteThrowsList(param: Optional[bool]):
     """
     2. Testcase: incomplete list provided to decorator, should fail when param is None
@@ -26,7 +26,7 @@ def testIncompleteThrowsList(param: Optional[bool]):
         raise IOError
 
 
-@throws([ValueError, AssertionError])
+@throws(ValueError, AssertionError)
 def testCompleteThrowsList(param: bool):
     """
     3. Testcase: complete list provided to decorater, should not fail even when param is None
@@ -42,7 +42,7 @@ if __name__ == "__main__":
     try:
         testEmptyThrowsList()
         ran1 = True
-    except ListEmptyException:
+    except EmptyListException:
         ran1 = False
     
     assert(ran1 == False)
