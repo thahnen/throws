@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from functools import wraps
+from typing import Any
 
 
 class EmptyListException(Exception):
@@ -20,7 +21,7 @@ class InvalidRaisedException(Exception):
     pass
 
 
-def throws(*errors: list):
+def throws(*errors: Any):
     """
     Decorator for functions equal to the "@throws(...)" decorator provided by Kotlin to specify
     possible exceptions or errors thrown!

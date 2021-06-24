@@ -133,3 +133,7 @@ dmypy.json
 
 # DS_STORE
 .DS_STORE
+
+# PyCharm
+.idea/
+venv/
