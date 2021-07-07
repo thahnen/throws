@@ -35,6 +35,24 @@ The library provides two Exceptions by itself, the *EmptyListException* and the
 exception which is not provided to the decorator, providing the developer with feedback that he
 might have forgotten about handling this specific exception!
 
+## Uploading a new version
+
+To create and upload a new version to PyPI use the following commands:
+
+```bash
+# 1) Check for correctness
+python3 setup.py check
+
+# 2) Create distributable files
+python3 setup.py sdist bdist_wheel
+
+# 3) Check distributable files
+python3 -m twine check dist/*
+
+# 4) Upload distributable files
+python3 -m twine upload dist/*
+```
+
 ## Links
 
 Library at the Python Package Index (PyPI): https://pypi.org/project/throws/
