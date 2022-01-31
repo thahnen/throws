@@ -10,7 +10,7 @@ with open("README.md", "r", encoding = "utf-8") as readme:
 
 setuptools.setup(
     name = "throws",
-    version = "1.0.5",
+    version = "1.0.6",
     description = "Python implementation of the @throws(...) function decorator provided by Kotlin!",
     long_description = doc,
     long_description_content_type = "text/markdown",

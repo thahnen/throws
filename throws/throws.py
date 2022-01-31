@@ -46,11 +46,12 @@ def throws(*errors: Any):
                 for exception in errors:
                     if isinstance(err, exception):
                         raise err
-                
-                raise InvalidRaisedException(
-                    f"Exception {err.__class__.__name__} missing in list for decorator at "
-                    + f"function '{function.__name__}'!"
-                ) from None
+
+                if not isinstance(err, InvalidRaisedException) or not isinstance(err, EmptyListException):
+                    raise InvalidRaisedException(
+                        f"Exception {err.__class__.__name__} missing in list for decorator at "
+                        + f"function '{function.__name__}'!"
+                    ) from None
         
         return wrapper
     return decorator
